@@ -15,11 +15,13 @@ const MeetingTypeList = () => {
 
   const { user } = useUser();
   const client = useStreamVideoClient();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [values, setValues] = useState({
     dateTime: new Date(),
     description: "",
     link: "",
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [callDetails, setCallDetails] = useState<Call>();
   const { toast } = useToast();
   const createMeeting = async () => {
@@ -98,8 +100,8 @@ const MeetingTypeList = () => {
         title="Start an instant meeting"
         className="text-center"
         buttonText="Start Meeting"
-        handleClick={createMeeting}
-      />
+        // eslint-disable-next-line react/no-children-prop
+        handleClick={createMeeting} children={undefined}      />
     </section>
   );
 };

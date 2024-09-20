@@ -1,4 +1,4 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 const protectedRoutes = createRouteMatcher([
     '/',
     '/upcoming',
@@ -8,10 +8,17 @@ const protectedRoutes = createRouteMatcher([
     '/meeting(.*)',
 ])
 
-export default clerkMiddleware((auth, req)=>{
-    if(protectedRoutes(req)) auth().protect()
+interface Auth {
+  protect: () => void;
+}
 
-})
+interface Req {
+  url: string;
+}
+
+export default clerkMiddleware((auth: () => Auth, req: Req) => {
+  if (protectedRoutes(req.url)) auth().protect();
+});
 
 export const config = {
   matcher: [

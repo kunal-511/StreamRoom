@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import {
-  Call,
   CallControls,
   CallingState,
   CallParticipantsList,
   CallStatsButton,
   PaginatedGridLayout,
   SpeakerLayout,
+  useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import React, { useState } from "react";
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
