@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const { endedCalls, upcomingCalls, CallRecordings, loading } = useGetCalls();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const router = useRouter();
 

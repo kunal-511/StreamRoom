@@ -104,7 +104,10 @@ const MeetingTypeList = () => {
           isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
           title="Create Meeting"
-          handleClick={createMeeting}
+          handleClick={() => {
+            navigator.clipboard.writeText(meetingLink);
+            toast({ title: "Link Copied" });
+          }}
           buttonText={""}
         >
           <div className="flex flex-col gap-2.5 ">
@@ -168,14 +171,18 @@ const MeetingTypeList = () => {
       <MeetingModal
         isOpen={meetingState === "isJoiningMeeting"}
         onClose={() => setMeetingState(undefined)}
-        title="Type the link here" 
+        title="Type the link here"
         className="text-center"
         buttonText="Start Meeting"
-        handleClick={()=>{router.push(values.link)}}
+        handleClick={() => {
+          router.push(values.link);
+        }}
       >
-        <Input placeholder="Meeting Link" className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0" onChange={(e)=> setValues({...values, link: e.target.value})} />
-
-         
+        <Input
+          placeholder="Meeting Link"
+          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+          onChange={(e) => setValues({ ...values, link: e.target.value })}
+        />
       </MeetingModal>
     </section>
   );
